@@ -17,6 +17,8 @@ var auditTask = function (taskEl) {
   else if (Math.abs(moment().diff(time, "days")) <= 2) {
     $(taskEl).addClass("list-group-item-warning");
   }
+
+  console.log(taskEl);
 };
 
 var createTask = function (taskText, taskDate, taskList) {
@@ -287,3 +289,8 @@ $("#modalDueDate").datepicker({
   minDate: 1
 });
 
+setInterval(function () {
+  $(".card .list-group-item").each(function (index, el) {
+    auditTask(el);
+  });
+}, 1_800_000);
